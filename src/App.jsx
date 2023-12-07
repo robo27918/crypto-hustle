@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import viteLogo from '/vite.svg'
 import './App.css'
 const API_KEY = "40828f6623a246233b579aa60148e9dac95d282f6b6052b65646b322c9a81549"
-
+import CoinInfo from './Components/CoinInfo'
 function App() {
   const [list,setList] = useState(null);
   
@@ -34,7 +34,11 @@ function App() {
         <ul>
           {list && Object.entries(list.Data).map(([coin]) =>
           list.Data[coin].PlatformType === "blockchain" ? (
-          <li key={list.Data[coin].FullName}>{list.Data[coin].FullName}</li>
+          <CoinInfo
+            image={list.Data[coin].ImageUrl}
+            name={list.Data[coin].FullName}
+            symbol={list.Data[coin].Symbol}
+          />
            ) : null
           )}
         </ul>
